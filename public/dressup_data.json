@@ -11,10 +11,30 @@
   },
   {
     "_id": 2,
+    "name": "blue tenshi kawaii top",
+    "type": "top",
+    "image": "tenshi_top.jpg",
+    "color": "blue",
+    "available_sizes": ["s", "m", "xl"],
+    "available_length": ["normal", "oversize"],
+    "extras": ["lace"]
+  },
+  {
+    "_id": 3,
     "name": "blue skirt",
     "type": "skirt",
     "image": "blue_skirt.jpg",
     "color": "blue",
+    "available_sizes": ["s", "m", "xl"],
+    "available_length": ["17.8", "18", "18.5"],
+    "extras": ["2nd layer", "lace"]
+  },
+  {
+    "_id": 4,
+    "name": "pink skirt",
+    "type": "skirt",
+    "image": "pink_skirt.jpg",
+    "color": "pink",
     "available_sizes": ["s", "m", "xl"],
     "available_length": ["17.8", "18", "18.5"],
     "extras": ["2nd layer", "lace"]
