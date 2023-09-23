@@ -3,12 +3,8 @@
 </template>
 
 <script setup lang="ts">
-let dataSrc = "http://localhost:3000/dressup_data.json"; // dev
-if (process.env.NODE_ENV !== "development") {
-  dataSrc = "https://dressup.kawaii.ch/dressup_data.json"; // production
-}
-
-const { data: dressup } = await useFetch(dataSrc, {
+const config = useRuntimeConfig();
+const { data: dressup } = await useFetch(config.public.API_PATH, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
