@@ -7,6 +7,4 @@
 
 <script setup lang="ts">
 const props = defineProps({ data: { type: Object } });
-
-console.log("log data", props.data);
 </script>
