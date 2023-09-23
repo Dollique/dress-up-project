@@ -1,0 +1,22 @@
+[
+  {
+    "_id": 1,
+    "name": "pink cute top",
+    "type": "top",
+    "image": "cute_top.jpg",
+    "color": "pink",
+    "available_sizes": ["s", "m", "xl"],
+    "available_length": ["normal", "oversize"],
+    "extras": ["lace"]
+  },
+  {
+    "_id": 2,
+    "name": "blue skirt",
+    "type": "skirt",
+    "image": "blue_skirt.jpg",
+    "color": "blue",
+    "available_sizes": ["s", "m", "xl"],
+    "available_length": ["17.8", "18", "18.5"],
+    "extras": ["2nd layer", "lace"]
+  }
+]
