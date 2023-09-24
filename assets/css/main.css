@@ -8,4 +8,8 @@
     @apply text-xl font-bold;
   }
   */
+
+  .product {
+    @apply border border-gray-300 w-auto cursor-pointer;
+  }
 }
