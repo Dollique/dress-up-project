@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /** example of how to add/change utility classes
+  .yourclass {
+    @apply text-xl font-bold;
+  }
+  */
+}

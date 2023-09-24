@@ -6,4 +6,11 @@ export default defineNuxtConfig({
       API_PATH: process.env.API_PATH,
     },
   },
+  css: ["~/assets/css/main.css"],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 });
