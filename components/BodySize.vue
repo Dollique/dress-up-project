@@ -28,7 +28,20 @@
 const bodySize = useState("bodySize", () => "please choose size");
 
 const selectSize = (event) => {
+  // set state
   const getText = event.currentTarget.querySelector("figcaption").innerHTML;
   bodySize.value = getText;
+
+  // toggle active class
+  event.currentTarget.parentNode
+    .querySelectorAll("figure")
+    .forEach((el) => el.classList.remove("active"));
+  event.currentTarget.classList.add("active");
 };
 </script>
+
+<style>
+.active {
+  border-color: black;
+}
+</style>
