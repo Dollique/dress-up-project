@@ -1,5 +1,8 @@
 <template>
-  <h2>Step 1 - Choose Body</h2>
+  <article class="prose">
+    <h2>Choose Body</h2>
+  </article>
+
   <div class="columns-2">
     <figure class="product" @click="selectSize">
       <img src="https://placehold.co/150x150" />
