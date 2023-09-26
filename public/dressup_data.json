@@ -5,7 +5,7 @@
     "type": "top",
     "image": "top_pink.jpg",
     "color": "pink",
-    "availableSizes": ["s", "m", "xl"],
+    "availableSizes": ["xs", "s", "m", "xl"],
     "availableLength": ["normal", "oversize"],
     "extras": ["lace"]
   },
@@ -15,7 +15,7 @@
     "type": "top",
     "image": "top_purple.jpg",
     "color": "purple",
-    "availableSizes": ["s", "m", "xl"],
+    "availableSizes": ["s", "m", "xl", "xxl"],
     "availableLength": ["normal", "oversize"],
     "extras": ["lace"]
   },
@@ -25,8 +25,8 @@
     "type": "bottom",
     "image": "skirt_black.jpg",
     "color": "blacl",
-    "availableSizes": ["s", "m", "xl"],
-    "availableLength": ["17.8", "18", "18.5"],
+    "availableSizes": ["xs", "s", "m", "xl"],
+    "availableLength": ["17.6", "18", "18.5", "19"],
     "extras": ["2nd layer", "lace"]
   },
   {
@@ -36,7 +36,7 @@
     "image": "skirt_pink.jpg",
     "color": "pink",
     "availableSizes": ["s", "m", "xl"],
-    "availableLength": ["17.8", "18", "18.5"],
+    "availableLength": ["17.8", "18", "18.5", "20"],
     "extras": ["2nd layer", "lace"]
   }
 ]
