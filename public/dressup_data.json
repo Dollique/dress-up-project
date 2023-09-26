@@ -5,8 +5,8 @@
     "type": "top",
     "image": "top_pink.jpg",
     "color": "pink",
-    "available_sizes": ["s", "m", "xl"],
-    "available_length": ["normal", "oversize"],
+    "availableSizes": ["s", "m", "xl"],
+    "availableLength": ["normal", "oversize"],
     "extras": ["lace"]
   },
   {
@@ -15,28 +15,28 @@
     "type": "top",
     "image": "top_purple.jpg",
     "color": "purple",
-    "available_sizes": ["s", "m", "xl"],
-    "available_length": ["normal", "oversize"],
+    "availableSizes": ["s", "m", "xl"],
+    "availableLength": ["normal", "oversize"],
     "extras": ["lace"]
   },
   {
     "_id": 3,
     "name": "black skirt",
-    "type": "skirt",
+    "type": "bottom",
     "image": "skirt_black.jpg",
     "color": "blacl",
-    "available_sizes": ["s", "m", "xl"],
-    "available_length": ["17.8", "18", "18.5"],
+    "availableSizes": ["s", "m", "xl"],
+    "availableLength": ["17.8", "18", "18.5"],
     "extras": ["2nd layer", "lace"]
   },
   {
     "_id": 4,
     "name": "pink skirt",
-    "type": "skirt",
+    "type": "bottom",
     "image": "skirt_pink.jpg",
     "color": "pink",
-    "available_sizes": ["s", "m", "xl"],
-    "available_length": ["17.8", "18", "18.5"],
+    "availableSizes": ["s", "m", "xl"],
+    "availableLength": ["17.8", "18", "18.5"],
     "extras": ["2nd layer", "lace"]
   }
 ]
