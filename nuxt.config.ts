@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
+  modules: [
+    "@pinia/nuxt", // Vue Store
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},

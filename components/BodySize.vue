@@ -3,7 +3,7 @@
     <h2>Choose Body</h2>
   </article>
 
-  <div class="columns-2">
+  <div class="flex flex-wrap gap-4">
     <figure class="product" @click="selectSize">
       <img src="https://placehold.co/150x150" />
       <figcaption>Smol Potet</figcaption>
@@ -24,16 +24,17 @@
       <figcaption>Chubby Potet</figcaption>
     </figure>
   </div>
-  <div>Selected: {{ bodySize }}</div>
+  <div>Selected: {{ productsStore.body_size }}</div>
 </template>
 
 <script setup>
-const bodySize = useState("bodySize", () => "please choose size");
+import { useProductsStore } from "~/store/products";
+const productsStore = useProductsStore(); // get the store data
 
 const selectSize = (event) => {
   // set state
   const getText = event.currentTarget.querySelector("figcaption").innerHTML;
-  bodySize.value = getText;
+  productsStore.body_size = getText;
 
   // toggle active class
   event.currentTarget.parentNode

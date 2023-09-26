@@ -3,7 +3,7 @@
     <h2>Choose {{ piece }}</h2>
   </article>
 
-  <div class="columns-2">
+  <div class="flex flex-wrap gap-4">
     <div
       v-for="item in dataPiece"
       :key="item._id"
@@ -15,7 +15,7 @@
       <div class="">{{ item.name }}</div>
     </div>
   </div>
-  <div>Selected: {{ itemState }}</div>
+  <div>Selected: {{ productsStore[`${props.piece}_id`] }}</div>
 
   <select>
     <option>Select size</option>
@@ -24,7 +24,7 @@
     </option>
   </select>
 
-  <select>
+  <select class="mt-1">
     <option>Select length</option>
     <option v-for="(length, index) in lengths" :key="`${length}_${index}`">
       {{ length }}
@@ -33,18 +33,23 @@
 </template>
 
 <script setup lang="ts">
+import { useProductsStore } from "~/store/products";
+
 const props = defineProps({ data: { type: Object }, piece: { type: String } });
 
 // get only data of the chosen piece type
 const dataPiece = props.data.filter((item) => item.type === props.piece);
 
-const itemState = useState(props.piece, () => 0);
+// get the store data
+const productsStore = useProductsStore();
+
+// define empty variables outside of functio scope
 let sizes = ref([]);
 let lengths = ref([]);
 
 const selectItem = (event) => {
   const getId = event.currentTarget.getAttribute("data-id");
-  itemState.value = parseFloat(getId) as number;
+  productsStore[`${props.piece}_id`] = parseFloat(getId) as number;
 
   // toggle active class
   event.currentTarget.parentNode
@@ -53,14 +58,12 @@ const selectItem = (event) => {
   event.currentTarget.classList.add("active");
 
   // const sizes = props.data[itemState.value].availableSizes;
-  const getItem = props.data.filter((itm) => itm._id === itemState.value)[0];
+  const getItem = props.data.filter(
+    (itm) => itm._id === productsStore[`${props.piece}_id`]
+  )[0];
   sizes = getItem.availableSizes;
   lengths = getItem.availableLength;
 };
-
-// get available sizes of selected item
-if (itemState.value) {
-}
 </script>
 
 <style>

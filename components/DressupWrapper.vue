@@ -8,6 +8,7 @@
       <BodySize />
       <ChooseClothing piece="top" :data="data" />
       <ChooseClothing piece="bottom" :data="data" />
+      <DressUp :data="data" />
     </section>
 
     <button class="btn mt-4">Add outfit to basket</button>
