@@ -1,17 +1,16 @@
 <template>
-  <section class="">
-    <article class="prose">
+  <section class="relative">
+    <SiteHeader />
+
+    <article class="m-4 prose">
       <h1>DressUp Prototype</h1>
     </article>
 
-    <section class="flex flex-col">
+    <section class="m-4 flex flex-col">
       <BodySize />
       <ChooseClothing piece="top" :data="data" />
       <ChooseClothing piece="bottom" :data="data" />
-      <DressUp :data="data" />
     </section>
-
-    <button class="btn mt-4">Add outfit to basket</button>
   </section>
 </template>
 

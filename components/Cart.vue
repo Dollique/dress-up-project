@@ -1,5 +1,7 @@
 <template>
-  <article class="prose">
+  <article
+    class="prose absolute top-[30px] right-3 bg-white border border-gray-300 p-3"
+  >
     <h2>Your products</h2>
     <ul>
       <li>Body: {{ productsStore.body_size }}</li>
@@ -11,8 +13,6 @@
 
 <script setup lang="ts">
 import { useProductsStore } from "~/store/products";
-
-const props = defineProps({ data: { type: Object } });
 
 // get the store data
 const productsStore = useProductsStore();
