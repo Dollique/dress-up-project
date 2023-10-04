@@ -1,7 +1,5 @@
 <template>
-  <section class="m-4">
-    <DressupWrapper :data="dressup" />
-  </section>
+  <DressupWrapper :data="dressup" />
 </template>
 
 <script setup lang="ts">
