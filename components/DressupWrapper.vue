@@ -12,8 +12,14 @@
       </div>
       <div class="flex flex-col">
         <BodySize />
-        <ChooseClothing piece="top" :data="data" />
-        <ChooseClothing piece="bottom" :data="data" />
+
+        <section>
+          <DressUpTabs />
+
+          <div class="itemCard">
+            <ChooseClothing :data="data" />
+          </div>
+        </section>
       </div>
     </section>
   </section>
