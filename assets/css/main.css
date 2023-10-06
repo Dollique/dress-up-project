@@ -16,4 +16,11 @@
   .itemCard {
     @apply bg-[#F7EAFB] shadow-itemCard mb-4 p-4;
   }
+
+  .tab-itemCart:hover {
+    @apply font-bold;
+  }
+  .tab-itemCart.tab-active {
+    @apply bg-[#F7EAFB] font-bold;
+  }
 }
