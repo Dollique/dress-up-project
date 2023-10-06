@@ -12,3 +12,10 @@ export const useProductsStore = defineStore("products", {
   }),
   actions: {},
 });
+
+export const useNavigationStore = defineStore("navigation", {
+  state: () => ({
+    category: "top",
+  }),
+  actions: {},
+});
