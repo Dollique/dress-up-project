@@ -5,8 +5,14 @@
     <h2>Your products</h2>
     <ul>
       <li>Body: {{ productsStore.body_size }}</li>
-      <li>Top: {{ productsStore.top_id }}</li>
-      <li>Botom: {{ productsStore.bottom_id }}</li>
+      <li>
+        Top: {{ productsStore.top_id }} ({{ productsStore.top_size }} /
+        {{ productsStore.top_length }})
+      </li>
+      <li>
+        Botom: {{ productsStore.bottom_id }} ({{ productsStore.bottom_size }} /
+        {{ productsStore.bottom_length }})
+      </li>
     </ul>
   </article>
 </template>
