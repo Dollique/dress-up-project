@@ -12,4 +12,8 @@
   .product {
     @apply border border-gray-300 w-auto cursor-pointer;
   }
+
+  .itemCard {
+    @apply bg-[#F7EAFB] shadow-itemCard mb-4 p-4;
+  }
 }

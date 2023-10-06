@@ -1,30 +1,32 @@
 <template>
-  <article class="prose">
-    <h2>Choose Body</h2>
-  </article>
+  <section class="itemCard">
+    <article class="prose">
+      <h2>Choose Body</h2>
+    </article>
 
-  <div class="flex flex-wrap gap-4">
-    <figure class="product" @click="selectSize">
-      <img src="https://placehold.co/150x150" />
-      <figcaption>Smol Potet</figcaption>
-    </figure>
+    <div class="flex flex-wrap gap-4">
+      <figure class="product" @click="selectSize">
+        <img src="https://placehold.co/150x150" />
+        <figcaption>Smol Potet</figcaption>
+      </figure>
 
-    <figure class="product" @click="selectSize">
-      <img src="https://placehold.co/150x150" />
-      <figcaption>Potet</figcaption>
-    </figure>
+      <figure class="product" @click="selectSize">
+        <img src="https://placehold.co/150x150" />
+        <figcaption>Potet</figcaption>
+      </figure>
 
-    <figure class="product" @click="selectSize">
-      <img src="https://placehold.co/150x150" />
-      <figcaption>More Potet</figcaption>
-    </figure>
+      <figure class="product" @click="selectSize">
+        <img src="https://placehold.co/150x150" />
+        <figcaption>More Potet</figcaption>
+      </figure>
 
-    <figure class="product" @click="selectSize">
-      <img src="https://placehold.co/150x150" />
-      <figcaption>Chubby Potet</figcaption>
-    </figure>
-  </div>
-  <div>Selected: {{ productsStore.body_size }}</div>
+      <figure class="product" @click="selectSize">
+        <img src="https://placehold.co/150x150" />
+        <figcaption>Chubby Potet</figcaption>
+      </figure>
+    </div>
+    <div>Selected: {{ productsStore.body_size }}</div>
+  </section>
 </template>
 
 <script setup>

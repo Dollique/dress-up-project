@@ -1,1 +1,1 @@
-interface DressUp {}
+interface DressUpItem {}

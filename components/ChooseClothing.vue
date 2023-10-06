@@ -1,35 +1,37 @@
 <template>
-  <article class="prose">
-    <h2>Choose {{ piece }}</h2>
-  </article>
+  <section class="itemCard">
+    <article class="prose">
+      <h2>Choose {{ piece }}</h2>
+    </article>
 
-  <div class="flex flex-wrap gap-4">
-    <div
-      v-for="item in dataPiece"
-      :key="item._id"
-      :data-id="item._id"
-      class="item"
-      @click="selectItem"
-    >
-      <img :src="`/images/clothing/${item.image}`" />
-      <div class="">{{ item.name }}</div>
+    <div class="flex flex-wrap gap-4">
+      <div
+        v-for="item in dataPiece"
+        :key="item._id"
+        :data-id="item._id"
+        class="item"
+        @click="selectItem"
+      >
+        <img :src="`/images/clothing/${item.image}`" />
+        <div class="">{{ item.name }}</div>
+      </div>
     </div>
-  </div>
-  <div>Selected: {{ productsStore[`${props.piece}_id`] }}</div>
+    <div>Selected: {{ productsStore[`${props.piece}_id`] }}</div>
 
-  <select>
-    <option>Select size</option>
-    <option v-for="(size, index) in sizes" :key="`${size}_${index}`">
-      {{ size }}
-    </option>
-  </select>
+    <select>
+      <option>Select size</option>
+      <option v-for="(size, index) in sizes" :key="`${size}_${index}`">
+        {{ size }}
+      </option>
+    </select>
 
-  <select class="mt-1">
-    <option>Select length</option>
-    <option v-for="(length, index) in lengths" :key="`${length}_${index}`">
-      {{ length }}
-    </option>
-  </select>
+    <select class="mt-1">
+      <option>Select length</option>
+      <option v-for="(length, index) in lengths" :key="`${length}_${index}`">
+        {{ length }}
+      </option>
+    </select>
+  </section>
 </template>
 
 <script setup lang="ts">

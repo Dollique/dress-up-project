@@ -6,10 +6,15 @@
       <h1>DressUp Prototype</h1>
     </article>
 
-    <section class="m-4 flex flex-col">
-      <BodySize />
-      <ChooseClothing piece="top" :data="data" />
-      <ChooseClothing piece="bottom" :data="data" />
+    <section class="m-4 flex gap-4">
+      <div class="grow flex justify-center items-center">
+        <Preview :data="data" />
+      </div>
+      <div class="flex flex-col">
+        <BodySize />
+        <ChooseClothing piece="top" :data="data" />
+        <ChooseClothing piece="bottom" :data="data" />
+      </div>
     </section>
   </section>
 </template>

@@ -8,7 +8,11 @@ module.exports = {
     "./app.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        itemCard: "-4px 6px 10px -2px rgba(0, 0, 0, 0.25)",
+      },
+    },
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
