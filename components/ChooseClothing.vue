@@ -39,8 +39,8 @@ import { useProductsStore } from "~/store/products";
 
 const props = defineProps({ data: { type: Object }, piece: { type: String } });
 
-// get only data of the chosen piece type
-const dataPiece = props.data.filter((item) => item.type === props.piece);
+// get only data of the chosen piece category
+const dataPiece = props.data.filter((item) => item.category === props.piece);
 
 // get the store data
 const productsStore = useProductsStore();
