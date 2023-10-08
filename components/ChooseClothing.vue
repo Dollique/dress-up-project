@@ -41,6 +41,16 @@ import { storeToRefs } from "pinia";
 
 const props = defineProps({ data: { type: Object } });
 
+// todo: move to utils.js
+function isEmpty(obj) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 // get the store data
 const productsStore = useProductsStore();
 
@@ -48,46 +58,53 @@ const productsStore = useProductsStore();
 const navigationStore = useNavigationStore();
 const { category } = storeToRefs(navigationStore);
 
-// get initial data of the chosen category
-const getFilteredItems = (data, dataCategory) => {
-  return data.filter((item) => item.category === dataCategory);
-};
-
-let getItems = getFilteredItems(props.data, category.value);
-
-// define empty variables outside of functio scope
-let sizes = ref([]);
-let lengths = ref([]);
-
-const getSelectFilters = () => {
-  const getItem = props.data.filter(
-    (itm) => itm._id === productsStore[`${category.value}_id`]
-  )[0];
-
-  if (getItem) {
-    sizes = getItem.availableSizes;
-    lengths = getItem.availableLength;
-  }
-};
-
 const handleSelect = (selected, type) => {
   productsStore[`${category.value}_${type}`] = selected.target.value;
 };
 
-watch(category, (newCategory) => {
-  getItems = getFilteredItems(props.data, newCategory);
-  getSelectFilters();
-});
+let getItems = {};
 
-watch(productsStore, () => {
-  getSelectFilters();
-});
+// define empty variables outside of functio scope
+let sizes = ref([]);
+let lengths = ref([]);
 
 // update store on click
 const selectItem = (event) => {
   const getId = event.currentTarget.getAttribute("data-id");
   productsStore[`${category.value}_id`] = parseFloat(getId) as number;
 };
+
+/*
+ * handle API data
+ */
+if (!isEmpty(props.data)) {
+  // get initial data of the chosen category
+  const getFilteredItems = (data, dataCategory) => {
+    return data.filter((item) => item.category === dataCategory);
+  };
+
+  getItems = getFilteredItems(props.data, category.value);
+
+  const getSelectFilters = () => {
+    const getItem = props.data.filter(
+      (itm) => itm._id === productsStore[`${category.value}_id`]
+    )[0];
+
+    if (getItem) {
+      sizes = getItem.availableSizes;
+      lengths = getItem.availableLength;
+    }
+  };
+
+  watch(category, (newCategory) => {
+    getItems = getFilteredItems(props.data, newCategory);
+    getSelectFilters();
+  });
+
+  watch(productsStore, () => {
+    getSelectFilters();
+  });
+}
 </script>
 
 <style>
