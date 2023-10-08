@@ -6,12 +6,14 @@
     <ul>
       <li>Body: {{ productsStore.body_size }}</li>
       <li>
-        Top: {{ productsStore.top_id }} ({{ productsStore.top_size }} /
-        {{ productsStore.top_length }})
+        Top: {{ productsStore.tops_id }} ({{ productsStore.tops_size }} /
+        {{ productsStore.tops_length }})
       </li>
       <li>
-        Botom: {{ productsStore.bottom_id }} ({{ productsStore.bottom_size }} /
-        {{ productsStore.bottom_length }})
+        Botom: {{ productsStore.bottoms_id }} ({{
+          productsStore.bottoms_size
+        }}
+        / {{ productsStore.bottoms_length }})
       </li>
     </ul>
   </article>

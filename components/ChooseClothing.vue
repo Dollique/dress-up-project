@@ -6,15 +6,15 @@
   <div class="flex flex-wrap gap-4">
     <div
       v-for="item in getItems"
-      :key="item._id"
-      :data-id="item._id"
+      :key="item.id"
+      :data-id="item.id"
       :class="`item ${
-        item._id === productsStore[`${category}_id`] ? 'active' : ''
+        item.id === productsStore[`${category}_id`] ? 'active' : ''
       }`"
       @click="selectItem"
     >
-      <img :src="`/images/clothing/${item.image}`" />
-      <div class="">{{ item.name }}</div>
+      <img :src="item.attributes.image.data.attributes.url" />
+      <div class="">{{ item.attributes.name }}</div>
     </div>
   </div>
   <div>Selected: {{ productsStore[`${category}_id`] }}</div>
@@ -77,27 +77,32 @@ const selectItem = (event) => {
 /*
  * handle API data
  */
+
 if (!isEmpty(props.data)) {
+  const products = props.data.data; // strapi data structure
+
   // get initial data of the chosen category
   const getFilteredItems = (data, dataCategory) => {
-    return data.filter((item) => item.category === dataCategory);
+    return data.filter(
+      (item) => item.attributes.category.data.attributes.name === dataCategory
+    );
   };
 
-  getItems = getFilteredItems(props.data, category.value);
+  getItems = getFilteredItems(products, category.value);
 
   const getSelectFilters = () => {
-    const getItem = props.data.filter(
-      (itm) => itm._id === productsStore[`${category.value}_id`]
+    const getItem = products.filter(
+      (itm) => itm.id === productsStore[`${category.value}_id`]
     )[0];
 
     if (getItem) {
-      sizes = getItem.availableSizes;
-      lengths = getItem.availableLength;
+      sizes = getItem.attributes.sizes.split(",");
+      lengths = getItem.attributes.lengths.split(",");
     }
   };
 
   watch(category, (newCategory) => {
-    getItems = getFilteredItems(props.data, newCategory);
+    getItems = getFilteredItems(products, newCategory);
     getSelectFilters();
   });
 

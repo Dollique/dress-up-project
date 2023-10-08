@@ -2,17 +2,17 @@
   <div class="tabs">
     <a
       :class="`tab tab-itemCart ${
-        navigationStore.category === 'top' ? 'tab-active' : ''
+        navigationStore.category === 'tops' ? 'tab-active' : ''
       }`"
-      data-tabs-category="top"
+      data-tabs-category="tops"
       @click="handleTabClick"
       >Shirts</a
     >
     <a
       :class="`tab tab-itemCart ${
-        navigationStore.category === 'bottom' ? 'tab-active' : ''
+        navigationStore.category === 'bottoms' ? 'tab-active' : ''
       }`"
-      data-tabs-category="bottom"
+      data-tabs-category="bottoms"
       @click="handleTabClick"
       >Skirts</a
     >

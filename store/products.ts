@@ -3,19 +3,19 @@ import { defineStore } from "pinia";
 export const useProductsStore = defineStore("products", {
   state: () => ({
     body_size: "please choose size",
-    top_id: "",
-    top_size: "",
-    top_length: "",
-    bottom_id: "",
-    bottom_size: "",
-    bottom_length: "",
+    tops_id: "",
+    tops_size: "",
+    tops_length: "",
+    bottoms_id: "",
+    bottoms_size: "",
+    bottoms_length: "",
   }),
   actions: {},
 });
 
 export const useNavigationStore = defineStore("navigation", {
   state: () => ({
-    category: "top",
+    category: "tops",
   }),
   actions: {},
 });

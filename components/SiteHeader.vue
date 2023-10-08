@@ -6,7 +6,7 @@
 
     <menu
       ><CartOutlineIcon
-        v-if="productsStore.top_id === '' && productsStore.bottom_id === ''"
+        v-if="productsStore.tops_id === '' && productsStore.bottoms_id === ''"
       />
       <CartIcon v-else @click="handleCartClick" class="cursor-pointer" />
       <Cart v-if="cartOpen" />

@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       API_PATH: process.env.API_PATH,
+      API_TOKEN: process.env.API_TOKEN,
     },
   },
   css: ["~/assets/css/main.css"],

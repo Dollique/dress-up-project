@@ -8,6 +8,7 @@ const { data: dressup, error } = await useFetch(config.public.API_PATH, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
+    Authorization: `bearer ${config.public.API_TOKEN}`,
   },
 });
 
