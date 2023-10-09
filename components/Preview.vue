@@ -33,6 +33,4 @@ const getDressUpItem = (items, id) => {
 
 // get the store data
 const productsStore = useProductsStore();
-
-console.log("store", productsStore);
 </script>
