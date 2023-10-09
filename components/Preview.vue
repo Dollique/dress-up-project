@@ -1,18 +1,20 @@
 <template>
   <article>
-    <div v-if="data && productsStore.top_id" class="top">
+    <div v-if="products && productsStore.tops_id" class="top">
       <img
-        :src="`/images/clothing/${
-          getDressUpItem(data, productsStore.top_id).image
-        }`"
+        :src="
+          getDressUpItem(products, productsStore.tops_id).attributes.image.data
+            .attributes.url
+        "
       />
     </div>
 
-    <div v-if="data && productsStore.bottom_id" class="bottom">
+    <div v-if="products && productsStore.bottoms_id" class="bottom">
       <img
-        :src="`/images/clothing/${
-          getDressUpItem(data, productsStore.bottom_id).image
-        }`"
+        :src="
+          getDressUpItem(products, productsStore.bottoms_id).attributes.image
+            .data.attributes.url
+        "
       />
     </div>
   </article>
@@ -22,12 +24,15 @@
 import { storeToRefs } from "pinia";
 import { useProductsStore } from "~/store/products";
 
-const props = defineProps({ data: { type: Object }, piece: { type: String } });
+const props = defineProps({ data: { type: Object } });
+const products = props.data.data;
 
-const getDressUpItem = (data, id) => {
-  return data.find((item) => item._id === id);
+const getDressUpItem = (items, id) => {
+  return items.find((item) => item.id === id);
 };
 
 // get the store data
 const productsStore = useProductsStore();
+
+console.log("store", productsStore);
 </script>
