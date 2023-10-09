@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       API_PATH: process.env.API_PATH,
+      API_PARAMS: process.env.API_PARAMS,
       API_TOKEN: process.env.API_TOKEN,
     },
   },
