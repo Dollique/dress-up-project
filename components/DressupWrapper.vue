@@ -11,7 +11,12 @@
         <Preview :data="data" />
       </div>
       <div class="flex flex-col">
-        <BodySize />
+        <section>
+          <strong>Choose Body</strong>
+          <div class="itemCard">
+            <BodyType :bodyTypeData="bodyTypeData" />
+          </div>
+        </section>
 
         <section>
           <DressUpTabs />
@@ -26,5 +31,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({ data: { type: Object } });
+const props = defineProps({
+  data: { type: Object },
+  bodyTypeData: { type: Object },
+});
 </script>
