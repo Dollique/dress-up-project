@@ -25,12 +25,13 @@ import { storeToRefs } from "pinia";
 import { useProductsStore } from "~/store/products";
 
 const props = defineProps({ data: { type: Object } });
-const products = props.data.data;
+
+// get the store data
+const productsStore = useProductsStore();
 
 const getDressUpItem = (items, id) => {
   return items.find((item) => item.id === id);
 };
 
-// get the store data
-const productsStore = useProductsStore();
+const products = props.data ? props.data.data : {};
 </script>

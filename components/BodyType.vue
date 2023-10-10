@@ -17,7 +17,6 @@ import { useProductsStore } from "~/store/products";
 const productsStore = useProductsStore(); // get the store data
 
 const props = defineProps({ bodyTypeData: { type: Object } });
-const bodyTypes = props.bodyTypeData.data;
 
 const selectSize = (event) => {
   // set state
@@ -30,6 +29,8 @@ const selectSize = (event) => {
     .forEach((el) => el.classList.remove("active"));
   event.currentTarget.classList.add("active");
 };
+
+const bodyTypes = props.bodyTypeData ? props.bodyTypeData.data : {};
 </script>
 
 <style>
