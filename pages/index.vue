@@ -1,8 +1,10 @@
 <template>
-  <DressupWrapper :data="dressup" :bodyTypeData="bodyType" />
+  <DressupWrapper />
 </template>
 
 <script setup lang="ts">
+import { useDataStore } from "~/store/data";
+
 const config = useRuntimeConfig();
 
 const headers = {
@@ -29,4 +31,9 @@ const { data: bodyType, errorBodyType } = await useFetch(
 if (error.value) {
   console.error("error while useFetch", error.value);
 }
+
+// put the data into the pinia state management
+const dataStore = useDataStore();
+dataStore.products = dressup;
+dataStore.body_types = bodyType;
 </script>
