@@ -4,7 +4,7 @@
   >
     <h2>Your products</h2>
     <ul>
-      <li>Body: {{ productsStore.body_size }}</li>
+      <li>Body: {{ productsStore.body_type }}</li>
       <li>
         Top: {{ productsStore.tops_id }} ({{ productsStore.tops_size }} /
         {{ productsStore.tops_length }})
