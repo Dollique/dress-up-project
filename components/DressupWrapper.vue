@@ -8,7 +8,7 @@
 
     <section class="m-4 flex gap-4">
       <div class="grow flex justify-center items-center">
-        <Preview :data="data" />
+        <Preview :data="data" :bodyTypeData="bodyTypeData" />
       </div>
       <div class="flex flex-col">
         <section>
