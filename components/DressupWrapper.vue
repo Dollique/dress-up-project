@@ -8,13 +8,13 @@
 
     <section class="m-4 flex gap-4">
       <div class="grow flex justify-center items-center">
-        <Preview :data="data" :bodyTypeData="bodyTypeData" />
+        <Preview />
       </div>
       <div class="flex flex-col">
         <section>
           <strong>Choose Body</strong>
           <div class="itemCard">
-            <BodyType :bodyTypeData="bodyTypeData" />
+            <BodyType />
           </div>
         </section>
 
@@ -22,7 +22,13 @@
           <DressUpTabs />
 
           <div class="itemCard">
-            <ChooseClothing :data="data" />
+            <ChooseClothing />
+          </div>
+
+          <strong>Size</strong>
+          <div class="itemCard">
+            <ProductOptions optionName="sizes" />
+            <ProductOptions optionName="lengths" />
           </div>
         </section>
       </div>
@@ -30,9 +36,4 @@
   </section>
 </template>
 
-<script setup lang="ts">
-const props = defineProps({
-  data: { type: Object },
-  bodyTypeData: { type: Object },
-});
-</script>
+<script setup lang="ts"></script>

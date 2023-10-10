@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { useNavigationStore } from "~/store/products";
+import { useNavigationStore } from "~/store/navigation";
 const navigationStore = useNavigationStore();
 
 const handleTabClick = (event) => {

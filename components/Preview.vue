@@ -40,20 +40,19 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { useDataStore } from "~/store/data";
 import { useProductsStore } from "~/store/products";
 
-const props = defineProps({
-  data: { type: Object },
-  bodyTypeData: { type: Object },
-});
-
-// get the store data
+const dataStore = useDataStore();
 const productsStore = useProductsStore();
+
+const data = dataStore.products;
+const bodyTypeData = dataStore.body_types;
 
 const getDressUpItem = (items, id) => {
   return items.find((item) => item.id === id);
 };
 
-const products = props.data ? props.data.data : {};
-const bodyType = props.bodyTypeData ? props.bodyTypeData.data : {};
+const products = data ? data.data : {};
+const bodyType = bodyTypeData ? bodyTypeData.data : {};
 </script>

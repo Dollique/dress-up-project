@@ -16,10 +16,12 @@
 </template>
 
 <script setup>
+import { useDataStore } from "~/store/data";
 import { useProductsStore } from "~/store/products";
-const productsStore = useProductsStore(); // get the store data
+const dataStore = useDataStore();
+const productsStore = useProductsStore();
 
-const props = defineProps({ bodyTypeData: { type: Object } });
+const bodyTypeData = dataStore.body_types;
 
 // update store on click
 const selectItem = (event) => {
@@ -27,7 +29,7 @@ const selectItem = (event) => {
   productsStore.body_type = parseFloat(getId);
 };
 
-const bodyTypes = props.bodyTypeData ? props.bodyTypeData.data : {};
+const bodyTypes = bodyTypeData ? bodyTypeData.data : {};
 </script>
 
 <style>
