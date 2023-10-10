@@ -32,7 +32,6 @@ const dataStore = useDataStore();
 const productsStore = useProductsStore();
 const navigationStore = useNavigationStore();
 
-const data = dataStore.products.data;
 const { category } = storeToRefs(navigationStore);
 
 const optionNameSingular = strToSingular(props.optionName);
@@ -44,8 +43,11 @@ let optionElementRef = ref([]);
 let optionElement = ref([]);
 
 // get options
-const getOptions = () => {
-  const product = getActiveProduct(data, productsStore[`${category.value}_id`]);
+const getOptions = (optionsArray) => {
+  const product = getActiveProduct(
+    optionsArray,
+    productsStore[`${category.value}_id`]
+  );
 
   if (!isEmpty(product)) {
     return product[props.optionName].split(",");
@@ -57,11 +59,15 @@ const handleSelect = (selected, name) => {
   productsStore[`${category.value}_${name}`] = selected.target.value;
 };
 
-watch(category, () => {
-  optionElement.value = getOptions();
-});
+if (dataStore.products) {
+  const data = dataStore.products.data;
 
-watch(productsStore, () => {
-  optionElement.value = getOptions();
-});
+  watch(category, () => {
+    optionElement.value = getOptions(data);
+  });
+
+  watch(productsStore, () => {
+    optionElement.value = getOptions(data);
+  });
+}
 </script>

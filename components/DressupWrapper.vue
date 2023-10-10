@@ -10,27 +10,31 @@
       <div class="grow flex justify-center items-center">
         <Preview />
       </div>
+
       <div class="flex flex-col">
-        <section>
-          <strong>Choose Body</strong>
-          <div class="itemCard">
+        <ItemCard>
+          <template #cardTitle>Choose Body</template>
+          <template #cardContent>
             <BodyType />
-          </div>
-        </section>
+          </template>
+        </ItemCard>
 
-        <section>
-          <DressUpTabs />
-
-          <div class="itemCard">
+        <ItemCard>
+          <template #cardNav>
+            <DressUpTabs />
+          </template>
+          <template #cardContent>
             <ChooseClothing />
-          </div>
+          </template>
+        </ItemCard>
 
-          <strong>Size</strong>
-          <div class="itemCard">
+        <ItemCard>
+          <template #cardTitle>Size</template>
+          <template #cardContent>
             <ProductOptions optionName="sizes" />
             <ProductOptions optionName="lengths" />
-          </div>
-        </section>
+          </template>
+        </ItemCard>
       </div>
     </section>
   </section>

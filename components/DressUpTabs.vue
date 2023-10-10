@@ -1,37 +1,22 @@
 <template>
-  <div class="tabs">
-    <a
-      :class="`tab tab-itemCart ${
-        navigationStore.category === 'tops' ? 'tab-active' : ''
-      }`"
-      data-tabs-category="tops"
-      @click="handleTabClick"
-      >Shirts</a
-    >
-    <a
-      :class="`tab tab-itemCart ${
-        navigationStore.category === 'bottoms' ? 'tab-active' : ''
-      }`"
-      data-tabs-category="bottoms"
-      @click="handleTabClick"
-      >Skirts</a
-    >
-    <a
-      :class="`tab tab-itemCart ${
-        navigationStore.category === 'accessoirs' ? 'tab-active' : ''
-      }`"
-      data-tabs-category="accessoirs"
-      @click="handleTabClick"
-      >Accessoirs</a
-    >
+  <div v-if="categories" class="tabs">
+    <DressUpTab
+      v-for="navData in categories"
+      :key="navData.id"
+      :tabNav="navData.attributes.name"
+      :title="navData.attributes.title"
+    />
   </div>
 </template>
 
-<script setup>
-import { useNavigationStore } from "~/store/navigation";
-const navigationStore = useNavigationStore();
+<script setup lang="ts">
+import { useDataStore } from "~/store/data";
 
-const handleTabClick = (event) => {
-  navigationStore.category = event.currentTarget.dataset.tabsCategory;
-};
+const dataStore = useDataStore();
+let categories = {};
+
+if (dataStore && !isEmpty(dataStore.categories)) {
+  categories = dataStore.categories.data;
+  categories = categories.sort((a, b) => a.id - b.id);
+}
 </script>

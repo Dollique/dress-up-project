@@ -37,25 +37,26 @@ const { category } = storeToRefs(navigationStore);
 
 let getItems = {};
 
+/** METHODS **/
+
 // update store on click
 const selectItem = (event) => {
   const getId = event.currentTarget.getAttribute("data-id");
   productsStore[`${category.value}_id`] = parseFloat(getId) as number;
 };
 
+// get initial data of the chosen category
+const getFilteredItems = (productData, dataCategory) => {
+  return productData.filter(
+    (item) => item.attributes.category.data.attributes.name === dataCategory
+  );
+};
+
 /*
  * handle API data
  */
-
 if (!isEmpty(data)) {
   const products = data.data; // strapi data structure
-
-  // get initial data of the chosen category
-  const getFilteredItems = (productData, dataCategory) => {
-    return productData.filter(
-      (item) => item.attributes.category.data.attributes.name === dataCategory
-    );
-  };
 
   getItems = getFilteredItems(products, category.value);
 
