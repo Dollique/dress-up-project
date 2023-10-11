@@ -1,8 +1,6 @@
 <template>
   <a
-    :class="`tab tab-itemCart ${
-      navigationStore.category === tabNav ? 'tab-active' : ''
-    }`"
+    :class="`tab tab-itemCart ${category === tabNav ? 'tab-active' : ''}`"
     :data-tabs-category="tabNav"
     @click="handleTabClick"
     >{{ title }}</a
@@ -10,8 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { useNavigationStore } from "~/store/navigation";
-const navigationStore = useNavigationStore();
+const category = ref(useCategory());
 
 const props = defineProps({
   tabNav: { type: String as PropType<string> },
@@ -19,6 +16,6 @@ const props = defineProps({
 });
 
 const handleTabClick = (event) => {
-  navigationStore.category = event.currentTarget.dataset.tabsCategory;
+  category.value = event.currentTarget.dataset.tabsCategory;
 };
 </script>

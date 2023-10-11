@@ -19,29 +19,23 @@
 </template>
 
 <script setup lang="ts">
-import { useDataStore } from "~/store/data";
 import { useProductsStore } from "~/store/products";
-import { useNavigationStore } from "~/store/navigation";
-import { storeToRefs } from "pinia";
 
 const props = defineProps({
   optionName: { type: String as PropType<string> },
 });
 
-const dataStore = useDataStore();
 const productsStore = useProductsStore();
-const navigationStore = useNavigationStore();
-
-const { tops_id, bottoms_id } = storeToRefs(productsStore);
-const { category } = storeToRefs(navigationStore);
-
+const category = useCategory();
+const activeProduct = ref(useActiveProduct());
 const optionNameSingular = strToSingular(props.optionName);
 
-// define variables and references
 // optionElementRef solves an issue with reactivity in v-for loops
 // https://stackoverflow.com/questions/71414977/refs-inside-v-for-loop-for-vue-v3-2-25-or-above
 let optionElementRef = ref([]);
 let optionElement = ref([]);
+
+/** METHODS **/
 
 // get options
 const getOptions = (activeItem, option: string) => {
@@ -56,23 +50,13 @@ const handleSelect = (selected, name: string) => {
   productsStore[`${category.value}_${name}`] = selected.target.value;
 };
 
-if (dataStore.products) {
-  const products = dataStore.products.data; // product array doesn't need to be reactive
+/** WATCHERS **/
 
-  const activeProductId = computed(() =>
-    category.value === "tops" ? tops_id.value : bottoms_id.value
-  );
+watch(category, () => {
+  optionElement.value = getOptions(activeProduct.value, props.optionName);
+});
 
-  const activeProduct = computed(() =>
-    getActiveProduct(products, activeProductId.value)
-  );
-
-  watch(category, () => {
-    optionElement.value = getOptions(activeProduct.value, props.optionName);
-  });
-
-  watch(productsStore, () => {
-    optionElement.value = getOptions(activeProduct.value, props.optionName);
-  });
-}
+watch(productsStore, () => {
+  optionElement.value = getOptions(activeProduct.value, props.optionName);
+});
 </script>
