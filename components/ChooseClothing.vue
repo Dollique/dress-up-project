@@ -17,6 +17,8 @@
       <div class="">{{ item.attributes.name }}</div>
     </div>
   </div>
+
+  <ProductColors />
 </template>
 
 <script setup lang="ts">
