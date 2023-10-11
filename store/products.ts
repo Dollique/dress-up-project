@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useProductsStore = defineStore("products", {
   state: () => ({
-    body_type: "",
+    body_type_id: "",
     tops_id: "",
     tops_size: "",
     tops_length: "",
