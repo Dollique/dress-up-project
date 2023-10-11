@@ -3,7 +3,7 @@
     <figure
       :data-id="bodyType.id"
       :class="`product ${
-        bodyType.id === productsStore.body_type ? 'active' : ''
+        bodyType.id === productsStore.body_type_id ? 'active' : ''
       }`"
       @click="selectItem"
       v-for="bodyType in bodyTypes"
@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useDataStore } from "~/store/data";
 import { useProductsStore } from "~/store/products";
 const dataStore = useDataStore();
@@ -26,7 +26,7 @@ const bodyTypeData = dataStore.body_types;
 // update store on click
 const selectItem = (event) => {
   const getId = event.currentTarget.getAttribute("data-id");
-  productsStore.body_type = parseFloat(getId);
+  productsStore.body_type_id = parseFloat(getId) as number;
 };
 
 const bodyTypes = bodyTypeData ? bodyTypeData.data : {};

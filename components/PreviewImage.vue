@@ -37,7 +37,7 @@ switch (props.previewType) {
   case "bodyType":
     previewClass = "absolute z-0 top-0 left-0 w-full h-full object-contain";
     activeItem = computed(() =>
-      getActiveProduct(bodyType, productsStore.body_type)
+      getActiveProduct(bodyType, productsStore.body_type_id)
     );
     break;
 
