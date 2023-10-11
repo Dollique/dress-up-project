@@ -32,6 +32,7 @@ const dataStore = useDataStore();
 const productsStore = useProductsStore();
 const navigationStore = useNavigationStore();
 
+const { tops_id, bottoms_id } = storeToRefs(productsStore);
 const { category } = storeToRefs(navigationStore);
 
 const optionNameSingular = strToSingular(props.optionName);
@@ -43,31 +44,35 @@ let optionElementRef = ref([]);
 let optionElement = ref([]);
 
 // get options
-const getOptions = (optionsArray) => {
-  const product = getActiveProduct(
-    optionsArray,
-    productsStore[`${category.value}_id`]
-  );
-
-  if (!isEmpty(product)) {
-    return product[props.optionName].split(",");
+const getOptions = (activeItem, option: string) => {
+  if (!isEmpty(activeItem)) {
+    return activeItem[option].split(",");
   }
 };
 
 // handle option select
-const handleSelect = (selected, name) => {
+const handleSelect = (selected, name: string) => {
+  // update product store
   productsStore[`${category.value}_${name}`] = selected.target.value;
 };
 
 if (dataStore.products) {
-  const data = dataStore.products.data;
+  const products = dataStore.products.data; // product array doesn't need to be reactive
+
+  const activeProductId = computed(() =>
+    category.value === "tops" ? tops_id.value : bottoms_id.value
+  );
+
+  const activeProduct = computed(() =>
+    getActiveProduct(products, activeProductId.value)
+  );
 
   watch(category, () => {
-    optionElement.value = getOptions(data);
+    optionElement.value = getOptions(activeProduct.value, props.optionName);
   });
 
   watch(productsStore, () => {
-    optionElement.value = getOptions(data);
+    optionElement.value = getOptions(activeProduct.value, props.optionName);
   });
 }
 </script>
