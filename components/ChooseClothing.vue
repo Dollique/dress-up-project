@@ -8,9 +8,7 @@
       v-for="item in getItems"
       :key="item.id"
       :data-id="item.id"
-      :class="`item ${
-        item.id === productsStore[`${category}_id`] ? 'active' : ''
-      }`"
+      :class="`item ${item.id === productsStore[category].id ? 'active' : ''}`"
       @click="selectItem($event, productsStore, category)"
     >
       <img :src="item.attributes.image.data.attributes.url" />
@@ -35,13 +33,13 @@ const getItems = ref(useProductsView());
 const selectItem = (event, products, myCategory: string) => {
   const getId = parseFloat(event.currentTarget.getAttribute("data-id"));
 
-  if (products[`${myCategory}_id`] !== getId) {
+  if (products[myCategory].id !== getId) {
     // remove options of current item from store
-    products[`${myCategory}_size`] = "";
-    products[`${myCategory}_length`] = "";
+    products[myCategory].size = "";
+    products[myCategory].length = "";
 
     // save new item in store
-    products[`${myCategory}_id`] = getId as number;
+    products[myCategory].id = getId as number;
   }
 };
 </script>

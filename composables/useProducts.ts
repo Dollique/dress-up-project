@@ -56,11 +56,11 @@ export const useProductsView = () => {
  */
 export const useActiveProductId = () => {
   const productsStore = useProductsStore();
-  const { tops_id, bottoms_id } = storeToRefs(productsStore);
+  const { tops, bottoms } = storeToRefs(productsStore);
   const category = useCategory();
 
   const activeProductId = computed(() =>
-    category.value === "tops" ? tops_id.value : bottoms_id.value
+    category.value === "tops" ? tops.value.id : bottoms.value.id
   );
 
   return activeProductId;

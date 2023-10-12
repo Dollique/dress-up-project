@@ -37,7 +37,7 @@ let options = ref([]);
 
 // handle option select
 const handleSelect = (selected, name: string) => {
-  productsStore[`${category.value}_${name}`] = selected.target.value;
+  productsStore[category.value][name] = selected.target.value;
 };
 
 /** WATCHERS **/

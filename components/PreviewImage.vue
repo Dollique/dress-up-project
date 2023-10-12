@@ -42,14 +42,14 @@ switch (props.previewType) {
   case "top":
     previewClass = "relative top-[150px] z-10 flex justify-center";
     activeItem = computed(() =>
-      getActiveProduct(products, productsStore.tops_id)
+      getActiveProduct(products, productsStore.tops.id)
     );
     break;
 
   case "bottom":
     previewClass = "relative top-[150px] z-10 flex justify-center";
     activeItem = computed(() =>
-      getActiveProduct(products, productsStore.bottoms_id)
+      getActiveProduct(products, productsStore.bottoms.id)
     );
     break;
 }
