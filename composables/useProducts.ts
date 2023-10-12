@@ -4,6 +4,15 @@ import { storeToRefs } from "pinia";
 
 /**
  *
+ * @returns products story
+ * @type object
+ */
+export const useProducts = () => {
+  return useProductsStore();
+};
+
+/**
+ *
  * @returns products of the current view (category)
  * @type ref() / object
  *

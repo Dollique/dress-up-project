@@ -4,7 +4,7 @@
   >
     <h2>Your products</h2>
     <ul>
-      <li>Body: {{ productsStore.body_type }}</li>
+      <li>Body: {{ productsStore.body_type_id }}</li>
       <li>
         Top: {{ productsStore.tops_id }} ({{ productsStore.tops_size }} /
         {{ productsStore.tops_length }})
@@ -20,8 +20,5 @@
 </template>
 
 <script setup lang="ts">
-import { useProductsStore } from "~/store/products";
-
-// get the store data
-const productsStore = useProductsStore();
+const productsStore = useProducts();
 </script>

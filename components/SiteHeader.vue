@@ -17,11 +17,12 @@
 <script setup>
 import CartIcon from "vue-material-design-icons/Cart.vue";
 import CartOutlineIcon from "vue-material-design-icons/CartOutline.vue";
-import { useProductsStore } from "~/store/products";
 
 // get the store data
-const productsStore = useProductsStore();
+const productsStore = useProducts();
 const cartOpen = ref(false);
+
+/** EVENT HANDLER **/
 
 const handleCartClick = (event) => {
   cartOpen.value ? (cartOpen.value = false) : (cartOpen.value = true);

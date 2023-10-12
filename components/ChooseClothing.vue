@@ -22,22 +22,28 @@
 </template>
 
 <script setup lang="ts">
-import { useProductsStore } from "~/store/products";
-
-/** METHODS **/
-
-// update store on click
-const selectItem = (event, products, myCategory: string) => {
-  const getId = event.currentTarget.getAttribute("data-id");
-  products[`${myCategory}_id`] = parseFloat(getId) as number;
-};
-
 // get the product state management
-const productsStore = useProductsStore();
+const productsStore = useProducts();
 const category = useCategory();
 
 // get products data of current category
 const getItems = ref(useProductsView());
+
+/** EVENT HANDLER **/
+
+// update store on click
+const selectItem = (event, products, myCategory: string) => {
+  const getId = parseFloat(event.currentTarget.getAttribute("data-id"));
+
+  if (products[`${myCategory}_id`] !== getId) {
+    // remove options of current item from store
+    products[`${myCategory}_size`] = "";
+    products[`${myCategory}_length`] = "";
+
+    // save new item in store
+    products[`${myCategory}_id`] = getId as number;
+  }
+};
 </script>
 
 <style>

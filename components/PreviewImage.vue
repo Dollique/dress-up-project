@@ -16,14 +16,13 @@
 
 <script setup lang="ts">
 import { useDataStore } from "~/store/data";
-import { useProductsStore } from "~/store/products";
 
 const props = defineProps({
   previewType: { type: String as PropType<string> },
 });
 
 const dataStore = useDataStore();
-const productsStore = useProductsStore();
+const productsStore = useProducts();
 
 const data = dataStore.products;
 const bodyTypeData = dataStore.body_types;
