@@ -1,5 +1,14 @@
 <template>
-  <div class="">
+  <section v-if="optionName === 'colors' && colors" class="mt-4 flex gap-2">
+    <ProductColor
+      v-for="color in colors"
+      :key="color.id"
+      :ref="(el) => colorsRef.push(el)"
+      :color="color"
+      @click="handleSelect($event, 'color')"
+    />
+  </section>
+  <div v-else class="">
     <label class="mr-2" :for="`option_${optionName}`">{{ optionName }}</label>
     <select
       v-if="options && options.length !== 0"
@@ -32,21 +41,37 @@ const optionNameSingular = strToSingular(props.optionName);
 // https://stackoverflow.com/questions/71414977/refs-inside-v-for-loop-for-vue-v3-2-25-or-above
 let optionsRef = ref([]);
 let options = ref([]);
+let colorsRef = ref([]);
+let colors = ref([]);
 
 /** EVENT HANDLER **/
 
 // handle option select
 const handleSelect = (selected, name: string) => {
-  productsStore[category.value][name] = selected.target.value;
+  let targetValue;
+  if (name === "color") {
+    targetValue = parseFloat(selected.currentTarget.dataset.colorId);
+  } else {
+    targetValue = selected.target.value;
+  }
+  productsStore[category.value][name] = targetValue;
 };
 
 /** WATCHERS **/
 
 watch(category, () => {
-  options.value = splitProductOption(activeProduct.value, props.optionName);
+  if (props.optionName === "colors") {
+    colors.value = useActiveColors();
+  } else {
+    options.value = splitProductOption(activeProduct.value, props.optionName);
+  }
 });
 
 watch(productsStore, () => {
-  options.value = splitProductOption(activeProduct.value, props.optionName);
+  if (props.optionName === "colors") {
+    colors.value = useActiveColors();
+  } else {
+    options.value = splitProductOption(activeProduct.value, props.optionName);
+  }
 });
 </script>

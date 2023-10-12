@@ -8,12 +8,14 @@
       <li>
         Top: {{ productsStore.tops.id }} ({{ productsStore.tops.size }} /
         {{ productsStore.tops.length }})
+        {{ productsStore.tops.color }}
       </li>
       <li>
         Botom: {{ productsStore.bottoms.id }} ({{
           productsStore.bottoms.size
         }}
         / {{ productsStore.bottoms.length }})
+        {{ productsStore.bottoms.color }}
       </li>
     </ul>
   </article>
@@ -21,4 +23,14 @@
 
 <script setup lang="ts">
 const productsStore = useProducts();
+
+// TODO: GET COLOR NAME
+/*const topColorId = productsStore.tops.color;
+
+console.log("topColorId", topColorId);
+console.log("productsStore", productsStore.tops);
+
+const topColor = ref(useColor(topColorId));
+
+console.log("topColor", topColor.value);*/
 </script>

@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <ProductColors />
+  <ProductOptions optionName="colors" />
 </template>
 
 <script setup lang="ts">
@@ -37,6 +37,7 @@ const selectItem = (event, products, myCategory: string) => {
     // remove options of current item from store
     products[myCategory].size = "";
     products[myCategory].length = "";
+    products[myCategory].color = "";
 
     // save new item in store
     products[myCategory].id = getId as number;

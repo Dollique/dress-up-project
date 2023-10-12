@@ -5,6 +5,7 @@ export const useDataStore = defineStore("data", {
     products: {},
     body_types: {},
     categories: {},
+    colors: {},
   }),
   actions: {},
 });

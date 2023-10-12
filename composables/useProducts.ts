@@ -76,6 +76,35 @@ export const useActiveProduct = () => {
   const activeProductId = ref(useActiveProductId());
 
   return computed(() =>
-    getActiveProduct(productsOfCurrentView.value, activeProductId.value)
+    getActiveData(productsOfCurrentView.value, activeProductId.value)
   );
+};
+
+/**
+ *
+ * @returns all colors of the active Product
+ * @type object
+ */
+export const useActiveColors = () => {
+  const activeProduct = ref(useActiveProduct());
+  if (activeProduct.value) {
+    return activeProduct.value.colors.data;
+  }
+  return;
+};
+
+/**
+ *
+ * @param colorId
+ * @returns color object of colorId
+ * @type ref()
+ */
+export const useColor = (colorId: number) => {
+  const dataStore = useDataStore();
+  const colorsData = dataStore.colors;
+  const colors = colorsData ? colorsData.data : {};
+
+  if (!colorId) return;
+
+  return computed(() => getActiveData(colors, colorId));
 };

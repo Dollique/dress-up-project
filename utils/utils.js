@@ -9,7 +9,7 @@ export const isEmpty = (obj) => {
 };
 
 // get active product object by id
-export const getActiveProduct = (productArray, id) => {
+export const getActiveData = (productArray, id) => {
   if (!id) return;
   const result = productArray.filter((item) => item.id === id);
   return result[0].attributes;
