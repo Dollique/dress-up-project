@@ -35,21 +35,19 @@ switch (props.previewType) {
   case "bodyType":
     previewClass = "absolute z-0 top-0 left-0 w-full h-full object-contain";
     activeItem = computed(() =>
-      getActiveProduct(bodyType, productsStore.body_type_id)
+      getActiveData(bodyType, productsStore.body_type_id)
     );
     break;
 
   case "top":
     previewClass = "relative top-[150px] z-10 flex justify-center";
-    activeItem = computed(() =>
-      getActiveProduct(products, productsStore.tops.id)
-    );
+    activeItem = computed(() => getActiveData(products, productsStore.tops.id));
     break;
 
   case "bottom":
     previewClass = "relative top-[150px] z-10 flex justify-center";
     activeItem = computed(() =>
-      getActiveProduct(products, productsStore.bottoms.id)
+      getActiveData(products, productsStore.bottoms.id)
     );
     break;
 }
